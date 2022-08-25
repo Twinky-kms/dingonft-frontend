@@ -18,6 +18,8 @@ const getMeta = async (address) => {
   const response = await get(`${META_BUCKET}/${address}`);
   if (response.status === 200) {
     return response.json();
+  } else if (response.status === 503) {
+    console.log("503 pls send help.")
   } else {
     return null;
   }
